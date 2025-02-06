@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Navbar</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="flex items-center space-x-3">
+                <img src="images/logonav.png" alt="Logo" class="w-10 h-10 rounded-full" />
+                <span class="text-2xl font-semibold text-blue-600">Ardian's Portfolio</span>
+            </div>
+
+            <ul class="hidden md:flex space-x-8 font-medium">
+                <li><a href="#home" class="text-gray-700 hover:text-blue-600">Home</a></li>
+                <li><a href="#about" class="text-gray-700 hover:text-blue-600">About</a></li>
+                <li><a href="#projects" class="text-gray-700 hover:text-blue-600">Projects</a></li>
+                <li><a href="#certification" class="text-gray-700 hover:text-blue-600">Certification</a></li>
+                <li><a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a></li>
+            </ul>
+
+            <div class="md:hidden flex items-center">
+                <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <ul class="flex flex-col space-y-4 p-4 font-medium">
+                <li class="bg-blue-50 rounded-lg p-3 hover:bg-blue-100">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600">Home</a>
+                </li>
+                <li class="bg-blue-50 rounded-lg p-3 hover:bg-blue-100">
+                    <a href="#about" class="text-gray-700 hover:text-blue-600">About</a>
+                </li>
+                <li class="bg-blue-50 rounded-lg p-3 hover:bg-blue-100">
+                    <a href="#projects" class="text-gray-700 hover:text-blue-600">Projects</a>
+                </li>
+                <li class="bg-blue-50 rounded-lg p-3 hover:bg-blue-100">
+                    <a href="#certification" class="text-gray-700 hover:text-blue-600">Certification</a>
+                </li>
+                <li class="bg-blue-50 rounded-lg p-3 hover:bg-blue-100">
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Awal Section home -->
+    <section id="home" class="min-h-screen flex flex-col md:flex-row items-center justify-center p-10">
+        <div class="w-full md:w-1/2 flex flex-col items-center mb-10 md:mb-0">
+          <img src="images/imghome.png" alt="Profile Image" class="profile-img shadow-lg mt-24 md:mt-0" />
+      
+          <!-- Curved Blue Divider Line -->
+          <div class="curved-line mt-10"></div>
+      
+          <!-- Social Media Icons -->
+          <div class="flex space-x-6 mt-4">
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+              <i class="ph ph-instagram-logo social-icon"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+              <i class="ph ph-linkedin-logo social-icon"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+              <i class="ph ph-facebook-logo social-icon"></i>
+            </a>
+          </div>
+        </div>
+      
+        <div class="w-full md:w-1/2 text-center md:text-left">
+          <h1 class="text-4xl font-bold text-gray-800 mb-6">Ardian Rahman</h1>
+          <p class="mt-4 text-lg text-gray-600 mb-12">
+            Hi, I'm a student at SMKN 1 Jakarta, majoring in Computer and Network Engineering. I truly enjoy learning about technological advancements and innovations.
+          </p>
+          <div class="text-xl italic font-semibold mb-2 flex justify-center md:justify-start">
+            <span class="text-blue-600 mr-1">Junior</span>
+            <span id="typing-text" class="text-blue-600"></span>
+          </div>
+          <a href="#contact" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
+            Contact Me
+          </a>
+        </div>
+      
+        <script>
+          const typingText = document.getElementById('typing-text');
+          const words = ["Front End Developer", "Network Ennginer"];
+          let wordIndex = 0;
+          let letterIndex = 0;
+          let currentWord = "";
+      
+          function typeEffect() {
+            if (letterIndex < words[wordIndex].length) {
+              currentWord += words[wordIndex][letterIndex];
+              typingText.textContent = currentWord;
+              letterIndex++;
+              setTimeout(typeEffect, 100);
+            } else {
+              setTimeout(eraseEffect, 1500); // Pause before erasing
+            }
+          }
+      
+          function eraseEffect() {
+            if (letterIndex > 0) {
+              currentWord = currentWord.slice(0, -1);
+              typingText.textContent = currentWord;
+              letterIndex--;
+              setTimeout(eraseEffect, 75);
+            } else {
+              wordIndex = (wordIndex + 1) % words.length;
+              setTimeout(typeEffect, 300);
+            }
+          }
+          typeEffect();
+        </script>
+      </section>
+      
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>
